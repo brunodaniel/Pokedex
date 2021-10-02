@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Detalhes</title>
+    <title>Pokedex | Detalhes</title>
   </head>
-  <body class="body">
-    <header class="header">
-      <h1><%= titulo %></h1>
-      <section class="navegacao">
-        <nav>
-          <a class="button" href="/">Pagina Principal</a>
-        </nav>
-      </section>
-    </header>
+
+  <body>
+    <nav>
+      <article>
+        <h1><a href="/">Pokedex</a></h1>
+      </article>
+
+      <ul>
+        <li><a href="/">Pagina inicial</a></li>
+        <li><a href="/formulario">Cadastro</a></li>
+      </ul>
+    </nav>
+    <p><%= pokemon.nome %></p>
+
+    <script src="/js/script.js"></script>
   </body>
 </html>

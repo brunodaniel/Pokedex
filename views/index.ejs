@@ -4,23 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <title>Pokedex</title>
+    <link rel="stylesheet" href="/css/estilo.css" />
+    <title>Pokedex | Pagina Inicial</title>
   </head>
-  <body class="body">
-    <main>
-      <header class="header">
-        <h1><%= titulo %></h1>
-      </header>
+  <body>
+    <header>
       <section class="navegacao">
-        <nav>
-          <a class="button" href="/detalhes">Detalhes</a>
-          <a class="button" href="/cadastro">Cadastro</a>
-        </nav>
+      <nav>
+        <ul class="nav_links">
+          <li class="links"><a class="links" href="/">Home</a></li>
+          <li class="links"><a class="links" href="/formulario">Cadastro</a></li>
+        </ul>
+      </nav>
       </section>
-
-      <img src="/imgs/" alt="" />
-    </main>
+    </header>
+      <% if(message != "") { %>
+      <section id="message">
+        <p><%= message %></p>
+        <span id="close">&times;</span>
+      </section>
+      <% } %>
+    </section>
+    <h1>Pokedex</h1>
+    <section id="pokedex">
+      <% pokedex.forEach((item, index) => { %>
+      <a class="card" href="/detalhes/<%= index %>">
+        <h4><b><%= item.nome %></b></h4>
+        <img src="<%= item.imagem %>" alt="Pokemon" style="width: 100%" />
+        <p><%= item.tipo %></p>
+      </a>
+      <% }) %>
+    </section>
     <script src="/js/script.js"></script>
   </body>
 </html>

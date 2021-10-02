@@ -1,68 +1,63 @@
-const express = require('express');
+const  express = require('express');
 const path = require('path');
 const app = express();
-const port = 3000; // default
+// const port = 3000; // default
+const port = process.env.PORT || 3000;
+let message = "";
+const pokedex = [
+    {
+        numero:001,
+        nome:"Bulbasaur",
+        tipo:"grass,poison",
+        imagem:"https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
+        descricao:"There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
+        altura:0.7,
+        peso:6.9,
+        categoria:"seed",
+        habilidade:"Overgrow",
+    }
 
-
+];
 
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(express.urlencoded());
+
 app.get("/", function(req, res) {
-    const pokedex = [
-        {
-            Numero:001 ,Nome: "Bulbasaur",
-            Tipo:"Grass, Poison",
-            Imagem: "",
-            Descrição: "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
-            Altura: "0.7m",
-            Peso: "6.9kg",
-            Categoria: "seed",
-            Habilidade: "Overgrow"
-        },
     
-        {
-             Numero:002 ,
-             Nome: "Ivysaur",
-             Tipo:"Grass, Poison",
-             Imagem: "",
-             Descrição: "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.",
-             Altura: "1m",
-             Peso: "13kg",
-             Categoria: "",
-             Habilidade: "Overgrow"
-        },
-    
-        {
-             Numero:003,
-             Nome: "Venusaur",
-             Tipo:"Grass, Poison",
-             Imagem: "",
-             Descrição: "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.",
-             Altura: "2m",
-             Peso: "100kg",
-             Categoria: "",
-             Habilidade: "Overgrow"
-        }
-    ];
-    res.render("index", {titulo: "Pokedex", Nome:pokedex.Nome, Tipo:pokedex.Tipo});
-    
+    res.render("index", {pokedex:pokedex,message:message});
 });
 
-app.get("/cadastro", function(req, res) {
-    res.render("../views/ejs/cadastro",  {titulo: "Cadastro"});
+
+
+
+app.get("/formulario", function (req, res){
+    res.render("../views/ejs/formulario");
 });
 
-app.get("/detalhes", function(req, res) {
+
+
+app.post("/new", (req, res) => {
+    const pokemon = req.body;
+    // console.log(pokemon);
+    pokedex.push(pokemon);
+    // console.log(pokedex);
+    message = "Pokemon cadastrado com sucesso!";
+    // console.log(message);
+    res.redirect("/");
     
-    res.render("../views/ejs/detalhes", {titulo: "Detalhes"});
-});
+  });
 
-app.post("index", (req, res) => {
-    const { name, type } = req.body
-    res.send({ name: Nome, type: Tipo });
-});
+  app.get("/detalhes/:id", (req, res) => {
+    const id = req.params.id;
+    const pokemon = pokedex[id];
+    console.log(pokemon);
+    res.render("detalhes", {pokemon:pokemon}
+    );
+  });
+
 
 // app.post
 // app.put
