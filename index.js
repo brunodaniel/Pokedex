@@ -41,11 +41,8 @@ app.get("/formulario", function (req, res){
 
 app.post("/new", (req, res) => {
     const pokemon = req.body;
-    // console.log(pokemon);
-    pokedex.push(pokemon);
-    // console.log(pokedex);
-    message = "Pokemon cadastrado com sucesso!";
-    // console.log(message);
+    pokedex.push(pokemon); 
+    message = "Pokemon cadastrado com sucesso!";    
     res.redirect("/");
     
   });
@@ -59,8 +56,6 @@ app.post("/new", (req, res) => {
   });
 
 
-// app.post
-// app.put
-// app.delete
+
 
 app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
