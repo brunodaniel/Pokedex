@@ -1,2 +1,2 @@
 # Pokedex
-Projet02-Mod02
+https://node-ejs-pokedex.herokuapp.com/
