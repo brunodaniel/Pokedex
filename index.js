@@ -15,7 +15,30 @@ const pokedex = [
         peso:6.9,
         categoria:"seed",
         habilidade:"Overgrow",
-    }
+    },
+    {
+        numero:002,
+        nome:"Ivysaur",
+        tipo:"grass,poison",
+        imagem:"https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png",
+        descricao:"When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.",
+        altura:1.0,
+        peso:13.9,
+        categoria:"seed",
+        habilidade:"Overgrow",
+    },
+    {
+        numero:003,
+        nome:"Venusaur",
+        tipo:"grass,poison",
+        imagem:"https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png",        descricao:"When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.",
+        descricao:"Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.",
+        altura:2.0,
+        peso:100.0,
+        categoria:"seed",
+        habilidade:"Overgrow",
+    },
+
 
 ];
 
